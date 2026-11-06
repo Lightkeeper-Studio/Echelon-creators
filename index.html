@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect x=%224%22 y=%2220%22 width=%226%22 height=%228%22 fill=%22%234338CA%22/%3E%3Crect x=%2213%22 y=%2213%22 width=%226%22 height=%2215%22 fill=%22%234338CA%22/%3E%3Crect x=%2222%22 y=%224%22 width=%226%22 height=%2224%22 fill=%22%23B7862F%22/%3E%3C/svg%3E">
+<title>Echelon Creators</title>
+<meta name="description" content="Echelon Creators takes creators from average to upper echelon: more platforms, more reach, more income.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: a rising staircase of "echelons" — each section is one step up; the hero draws the steps literally. */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --ink:#11162A; --muted:#565C74; --line:#DADDE7;
+  --accent:#4338CA; --accent-ink:#FFFFFF; --brass:#B7862F;
+  --display:"Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --body:"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0C1020; --surface:#151A30; --ink:#EEF0F8; --muted:#A3A8C2; --line:#2A3050;
+  --accent:#8B85FF; --accent-ink:#0C1020; --brass:#E0B25A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0C1020; --surface:#151A30; --ink:#EEF0F8; --muted:#A3A8C2; --line:#2A3050;
+  --accent:#8B85FF; --accent-ink:#0C1020; --brass:#E0B25A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);line-height:1.05;text-wrap:balance;margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+nav{display:flex;justify-content:space-between;align-items:center;padding-block:22px}
+.logo{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:.02em;display:flex;gap:10px;align-items:center;text-decoration:none}
+.mark{display:inline-flex;align-items:flex-end;gap:2px;height:18px}
+.mark i{display:block;width:5px;background:var(--accent);border-radius:1px}
+.mark i:nth-child(1){height:6px}.mark i:nth-child(2){height:11px}.mark i:nth-child(3){height:18px;background:var(--brass)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);font-weight:600;padding:12px 20px;border-radius:999px;text-decoration:none;font-size:15px}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:end;padding-block:56px 72px}
+.hero h1{font-size:clamp(44px,7.5vw,88px);font-weight:800;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{color:var(--muted);font-size:19px;max-width:34ch;margin:22px 0 28px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.curve{margin:0;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.curve svg{display:block;width:100%;height:auto;max-width:100%}
+.curve .axis{stroke:var(--line);stroke-width:1.5}
+.curve .axis-label{fill:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.curve .zone{fill:var(--muted);opacity:.07}
+.curve .plateau{fill:none;stroke:var(--muted);stroke-width:3;stroke-linecap:round;stroke-dasharray:2 7}
+.curve .growth{fill:none;stroke:var(--accent);stroke-width:4;stroke-linecap:round}
+.curve .growth-fill{fill:var(--accent);opacity:.12}
+.curve .marker{stroke:var(--brass);stroke-width:1.5;stroke-dasharray:4 4}
+.curve .dot{fill:var(--brass)}
+.curve .dot-end{fill:var(--accent)}
+.curve .zone-label{fill:var(--ink);font-family:var(--display);font-weight:700;font-size:17px}
+.curve .zone-sub{fill:var(--muted);font-family:var(--body);font-size:13px}
+.curve .join-label{fill:var(--brass);font-family:var(--display);font-weight:700;font-size:15px}
+.curve .join-sub{fill:var(--muted);font-family:var(--body);font-size:13px}
+.curve .growth-label{fill:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+section{padding-block:72px;border-top:1px solid var(--line)}
+.section-head{display:grid;gap:12px;margin-bottom:36px;max-width:640px}
+.section-head h2{font-size:clamp(32px,4.5vw,48px);font-weight:700}
+.section-head p{color:var(--muted);margin:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.item{display:grid;gap:8px;align-content:start;min-width:0}
+.item h3{font-size:22px;font-weight:700}
+.item p{margin:0;color:var(--muted)}
+.num{font-family:var(--mono);font-size:13px;color:var(--brass)}
+.price{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.price-row{display:grid;grid-template-columns:1fr 2fr auto;gap:24px;padding:24px 28px;border-bottom:1px solid var(--line);align-items:baseline}
+.price-row:last-child{border-bottom:0}
+.price-row h3{font-size:20px}
+.price-row p{margin:0;color:var(--muted)}
+.amount{font-family:var(--display);font-weight:800;font-size:30px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.amount small{font-family:var(--body);font-weight:500;font-size:14px;color:var(--muted)}
+.note{color:var(--muted);font-size:15px;margin-top:16px;max-width:65ch}
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.fit ul{margin:0;padding-left:20px;display:grid;gap:8px}
+.fit h3{font-size:20px;margin-bottom:12px}
+.case{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.gauge{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;display:grid;gap:18px}
+.bar{display:grid;gap:6px}
+.bar label{display:flex;justify-content:space-between;font-size:14px;color:var(--muted)}
+.track{height:10px;background:var(--line);border-radius:99px;overflow:hidden}
+.fill{height:100%;background:var(--accent);border-radius:99px}
+.fill.brass{background:var(--brass)}
+details{border-bottom:1px solid var(--line);padding-block:16px}
+summary{cursor:pointer;font-weight:600;font-size:18px}
+details p{color:var(--muted);margin:10px 0 0;max-width:65ch}
+.final{text-align:left;padding-block:88px}
+.final h2{font-size:clamp(36px,6vw,64px);font-weight:800;max-width:16ch}
+.email{font-family:var(--mono);font-size:18px;margin-top:20px;user-select:all}
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media (max-width:820px){
+  .hero,.case,.fit{grid-template-columns:1fr}
+  .grid3{grid-template-columns:1fr}
+  .price-row{grid-template-columns:1fr;gap:6px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .curve .dot-end{animation:pulse 2.4s ease-in-out infinite;transform-origin:458px 34px}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#top"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>ECHELON CREATORS</a>
+    <a class="btn ghost" href="#start">Book a call</a>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <div class="eyebrow">Creator growth partners</div>
+      <h1>From average to <em>upper echelon.</em></h1>
+      <p>You've built an audience on one app. We turn it into a full-time creator business across every platform, and we only earn more when you do.</p>
+      <div class="cta-row">
+        <a class="btn" href="#start">Get your channel audit</a>
+        <a class="btn ghost" href="#pricing">See pricing</a>
+      </div>
+    </div>
+    <figure class="curve" role="img" aria-label="Illustration: growth flattens into a plateau on your own, then rises sharply once Echelon Creators steps in">
+      <svg viewBox="0 0 480 330" preserveAspectRatio="xMidYMid meet">
+        <line class="axis" x1="24" y1="290" x2="466" y2="290"/>
+        <line class="axis" x1="24" y1="290" x2="24" y2="20"/>
+        <text class="axis-label" x="466" y="312" text-anchor="end">Time</text>
+        <text class="axis-label" x="30" y="18">Reach &amp; income</text>
+        <path class="zone" d="M24,290 L24,20 L262,20 L262,290 Z"/>
+        <path class="plateau" d="M24,282 C60,250 92,236 126,232 S186,229 214,231 S248,228 262,229"/>
+        <path class="growth-fill" d="M262,229 C336,226 402,180 458,34 L458,290 L262,290 Z"/>
+        <path class="growth" d="M262,229 C336,226 402,180 458,34"/>
+        <line class="marker" x1="262" y1="44" x2="262" y2="290"/>
+        <circle class="dot" cx="262" cy="229" r="6"/>
+        <circle class="dot-end" cx="458" cy="34" r="6"/>
+        <text class="zone-label" x="40" y="206">On your own</text>
+        <text class="zone-sub" x="40" y="224">the plateau</text>
+        <text class="join-label" x="272" y="62">Echelon Creators</text>
+        <text class="join-sub" x="272" y="80">steps in</text>
+        <text class="growth-label" x="446" y="70" text-anchor="end">Exponential</text>
+      </svg>
+    </figure>
+  </header>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The gap</div>
+      <h2>Big on one app. Invisible everywhere else.</h2>
+      <p>Most creators we meet have tens of thousands of followers on TikTok and a YouTube channel that barely moves. That gap is where the money is: long-form views, AdSense, and the sponsors who pay for them.</p>
+    </div>
+    <div class="grid3">
+      <div class="item"><span class="num">Reach</span><h3>One platform is a risk</h3><p>One algorithm change can wipe out your views. A second platform protects your audience and your income.</p></div>
+      <div class="item"><span class="num">Revenue</span><h3>Short views pay little</h3><p>Long-form YouTube views and brand deals pay far more than short clips. Most creators leave that on the table.</p></div>
+      <div class="item"><span class="num">Time</span><h3>You can't do it all</h3><p>Strategy, titles, thumbnails, repurposing and sponsors. We run the system so you can keep creating.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How it works</div>
+      <h2>Three steps up.</h2>
+    </div>
+    <div class="grid3">
+      <div class="item"><span class="num">Step 1 · Week 1</span><h3>Audit and plan</h3><p>A full teardown of your channels, benchmarks against creators ahead of you, and a 90-day growth plan.</p></div>
+      <div class="item"><span class="num">Step 2 · Every week</span><h3>Build the system</h3><p>Weekly plan, titles and thumbnails, TikTok-to-YouTube repurposing and an upload schedule, all in your own client portal.</p></div>
+      <div class="item"><span class="num">Step 3 · Every month</span><h3>Grow the income</h3><p>Monthly reports, a media kit, and pitching sponsors once your numbers are ready for them.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Pricing</div>
+      <h2>Simple pricing. We win when you win.</h2>
+      <p>A one-off setup, a small monthly fee, and a share of the growth we create. Nothing on what you already earn.</p>
+    </div>
+    <div class="price">
+      <div class="price-row"><h3>Setup</h3><p>Channel audit, 90-day plan, channel clean-up and portal onboarding.</p><div class="amount">£300 <small>one-off</small></div></div>
+      <div class="price-row"><h3>Monthly</h3><p>Weekly strategy, packaging, repurposing, scheduling and reporting.</p><div class="amount">£200 <small>/ month</small></div></div>
+      <div class="price-row"><h3>Growth share</h3><p>15% of your income above your starting point: AdSense, brand deals, affiliate and merch.</p><div class="amount">15% <small>of growth</small></div></div>
+    </div>
+    <p class="note">Your starting point is your average monthly income over the 3 months before you join, agreed in writing. If your income doesn't grow, you pay no share. Minimum term 6 months.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Who it's for</div>
+      <h2>Built for creators on the edge of their next tier.</h2>
+    </div>
+    <div class="fit">
+      <div class="item"><h3>A good fit</h3>
+        <ul>
+          <li>10K to 250K followers on your main platform</li>
+          <li>A second platform, usually YouTube, that lags far behind</li>
+          <li>You post at least 3 times a week</li>
+          <li>No manager yet, and few or no brand deals</li>
+        </ul>
+      </div>
+      <div class="item"><h3>Not a fit yet</h3>
+        <ul>
+          <li>Under 10K followers anywhere: start with our free tips</li>
+          <li>Looking for bought followers or shortcuts</li>
+          <li>Not ready to post consistently</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap case">
+    <div class="section-head">
+      <div class="eyebrow">Case study #1 · In progress</div>
+      <h2>A gaming creator with a 26-to-1 gap.</h2>
+      <p>Nearly 100K followers on TikTok, under 4K subscribers on YouTube. We're closing that gap in public, with monthly updates on our channels.</p>
+    </div>
+    <div class="gauge" aria-label="Case study progress, illustrative">
+      <div class="bar"><label><span>TikTok followers</span><span>~100K</span></label><div class="track"><div class="fill brass" style="width:100%"></div></div></div>
+      <div class="bar"><label><span>YouTube subscribers today</span><span>~4K</span></label><div class="track"><div class="fill" style="width:4%"></div></div></div>
+      <div class="bar"><label><span>YouTube 90-day target</span><span>10K</span></label><div class="track"><div class="fill" style="width:10%;opacity:.55"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Questions</div>
+      <h2>Before you ask.</h2>
+    </div>
+    <details><summary>Do I have to give you my passwords?</summary><p>No. On YouTube we use Studio's built-in channel permissions, so you stay the owner and can remove us at any time.</p></details>
+    <details><summary>How is the growth share worked out?</summary><p>We agree your starting point in writing when you join. Each month you share your earnings screenshots in the portal, and we invoice 15% of anything above that starting point.</p></details>
+    <details><summary>What if I don't grow?</summary><p>Then you pay no growth share. Our monthly fee stays small so that most of what we earn depends on results.</p></details>
+    <details><summary>Which platforms do you work on?</summary><p>TikTok and YouTube first, then Instagram and others once those are working.</p></details>
+  </div>
+</section>
+
+<div class="wrap final" id="start">
+  <div class="eyebrow">Next step</div>
+  <h2>Ready for your next tier?</h2>
+  <p class="note">Email us your channel links. We'll reply with three quick wins you can use today, free.</p>
+  <div class="email">hello@echeloncreators.com</div>
+</div>
+
+<div class="wrap">
+  <footer>
+    <span>© 2026 Echelon Creators · United Kingdom</span>
+    <span>echeloncreators.com</span>
+  </footer>
+</div>
+</body>
+</html>
